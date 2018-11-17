@@ -10,17 +10,21 @@
 	Number: <input type='number' name="integer" value=""><br>
 </form>
 
-<button type="button" onclick="myFunction()">Click Me!</button>
+<button type="button" onclick="numberFunction()">Click Me!</button>
 
 <p id='display'></p>
 
 
 <script>
 
-function myFunction() {
+function numberFunction() {
     var zed = document.getElementById("demo");
     var y = zed.elements[0].value;
-    var x = String.fromCharCode(y);
+    var x = [];
+    var i;
+    for (i = 0; i < y; i++){
+      x.concat[Math.random() * 100]
+    }
     document.getElementById('display').innerHTML = x;
 }
 </script>
