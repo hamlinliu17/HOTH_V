@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title></title>
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
 </head>
 <body>
-
+	
 <h1>Password Generator</h1>
 <p>Welcome</p>
-
+	
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName"><br>
-  <input type="checkbox" name="vehicle1" value = "3"> Include an Uppercase Character<br>
-  <input type="checkbox" name="vehicle2"> I have a car
+<form>
+  <input id="checkbox1" type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
+  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
 </form>
 
 <button type="button" onclick="myFunction()">generate</button>
@@ -20,7 +21,6 @@ Length of the password: <input type="number" name="FirstName"><br>
 function myFunction() {
 	var x = document.getElementById("frm1");
 	var y = x.elements[0].value;
-    var z = x.elements[1].value;
 	var lower = "abcdefghijklmnopqrstuvwxyz";
 	var numbers = "0123456789";
 	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -34,6 +34,7 @@ function myFunction() {
 		res =lower[r];
         text += res;
     }
+	var isChecked = document.getElementById("checkbox1").checked;
     document.getElementById("demo").innerHTML = text;
 }
 </script>
