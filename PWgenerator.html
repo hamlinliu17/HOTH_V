@@ -32,8 +32,6 @@ Length of the password: <input type="number" name="FirstName"><br>
 	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters  <br>
 </form>
 
-
-
 <button type="button" onclick="myFunction()">generate</button>
 <script>
 
@@ -58,8 +56,42 @@ function myFunction() {
 	var isChecked = document.getElementById("checkbox1").checked;
     document.getElementById("demo").innerHTML = text;
 }
-</script>
 
+function atleastone(u1, l1, n1, s1, raw_pw) {
+    var arr = []
+    while(arr.length < 5){
+        var r = Math.floor(Math.random()*100) + 1;
+    i   f(arr.indexOf(r) === -1) arr.push(r);
+    }
+    var pos_u = arr[1]
+    var pos_l = arr[2]
+    var pos_n = arr[3]
+    var pos_s = arr[4]
+    var lower = "abcdefghijklmnopqrstuvwxyz";
+	var numbers = "0123456789";
+	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var random_num;
+    if (u1){
+        random_num = Math.floor(Math.random() * upper.length);
+        raw_pw[pos_u] = upper[random_num];
+    }
+    if (l1){
+        random_num = Math.floor(Math.random() * lower.length);
+        raw_pw[pos_l] = lower[random_num];
+    }
+    if (n1){
+        random_num = Math.floor(Math.random() * numbers.length);
+        raw_pw[pos_n] = numbers[random_num];
+    }
+    if (s1){
+        random_num = Math.floor(Math.random() * special.length);
+        raw_pw[pos_s] = special[random_num];
+    }
+    return raw_pw;
+}
+
+</script>
 <p id="demo">Your Password</p>
 
 </body>
