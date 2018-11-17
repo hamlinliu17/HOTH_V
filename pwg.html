@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head> 
-<meta charset="utf-8"> 
-<title></title> 
+<head>
+<meta charset="utf-8">
+<title></title>
 <script>
 function createList(checklist, size) {
 	var lower = "abcdefghijklmnopqrstuvwxyz";
@@ -10,13 +10,13 @@ function createList(checklist, size) {
 	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var pool = "";
-	if(checklist[0]){
+	if(checklist[1]){
 		pool += lower;
 	}
-	if(checklist[1]){
+	if(checklist[2]){
 		pool += numbers;
 	}
-	if(checklist[2]){
+	if(checklist[0]){
 		pool += upper
 	}
 	if(checklist[3]){
@@ -37,20 +37,20 @@ function createList(checklist, size) {
 </script>
 </head>
 <body>
-	
+
 <h1>Password Generator</h1>
 <p>Welcome</p>
-	
+
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName" value = 6><br>
 <form>
   <input id="checkbox1" type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
-  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
+  <input type="checkbox" name="vehicle2" value="Car"> I have a car
 </form>
 
 <h3>Which kind of elements are allowed?</h3>
 
-<form>
+<form id = 'allowed'>
 	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
 	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
 	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
@@ -73,8 +73,11 @@ Length of the password: <input type="number" name="FirstName" value = 6><br>
 function myFunction() {
 	var x = document.getElementById("frm1");
 	var y = x.elements[0].value;
-	var isChecked = document.getElementById("checkbox1").checked;
-	var pool  = createList([true, true, true, true], y)
+	var check4 = document.getElementById("checkbox4").checked;
+	var check5 = document.getElementById("checkbox5").checked;
+	var check6 = document.getElementById("checkbox6").checked;
+	var check7 = document.getElementById("checkbox7").checked;
+	var pool  = createList([check4, check5, check6, check7], y)
     document.getElementById("demo").innerHTML = pool;
 }
 </script>
