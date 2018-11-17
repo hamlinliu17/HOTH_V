@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
+</head>
+<body>
+	
+<h1>Password Generator</h1>
+<p>Welcome</p>
+	
+<form id = "frm1" action="/action_page.php">
+Length of the password: <input type="number" name="FirstName"><br>
+<form>
+  <input type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
+  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
+</form>
+
+<button type="button" onclick="myFunction()">generate</button>
+<script>
+function myFunction() {
+	var x = document.getElementById("frm1");
+	var y = x.elements[0].value;
+	var lower = "abcdefghijklmnopqrstuvwxyz";
+	var r;
+	var i;
+	var res;
+	var text = "";
+	for (i = 0; i < y ; i++) {
+		r = Math.floor(Math.random() * 26);
+		res =char[r];
+        text += res;
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+</script>
+<p id="demo">Your Password</p>
+
+</body>
+</html>
