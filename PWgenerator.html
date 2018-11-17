@@ -11,9 +11,8 @@
 	
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName"><br>
-<form>
-  <input type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
-  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
+  <input type="checkbox" name="vehicle1" value = "3"> Include an Uppercase Character<br>
+  <input type="checkbox" name="vehicle2"> I have a car 
 </form>
 
 <button type="button" onclick="myFunction()">generate</button>
@@ -21,17 +20,21 @@ Length of the password: <input type="number" name="FirstName"><br>
 function myFunction() {
 	var x = document.getElementById("frm1");
 	var y = x.elements[0].value;
+    var z = x.elements[1].value;
 	var lower = "abcdefghijklmnopqrstuvwxyz";
+	var numbers = "0123456789";
+	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
 	var r;
 	var i;
 	var res;
 	var text = "";
 	for (i = 0; i < y ; i++) {
 		r = Math.floor(Math.random() * 26);
-		res =char[r];
+		res =lower[r];
         text += res;
     }
-    document.getElementById("demo").innerHTML = text;
+    document.getElementById("demo").innerHTML = z;
 }
 </script>
 <p id="demo">Your Password</p>
