@@ -6,15 +6,22 @@
 
 <p>This example calls a function which performs a calculation and returns the result:</p>
 
-<p id="demo"></p>
+<form id="demo" action="/action.php">
+	Number: <input type='number' name="integer" value=""><br>
+</form>
 
 <button type="button" onclick="myFunction()">Click Me!</button>
+
+<p id='display'></p>
+
 
 <script>
 
 function myFunction() {
-    var zed = String.fromCharCode(65);
-    document.getElementById("demo").innerHTML = zed;
+    var zed = document.getElementById("demo");
+    var y = zed.elements[0].value;
+    var x = String.fromCharCode(y);
+    document.getElementById('display').innerHTML = x;
 }
 </script>
 
