@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head> 
-<meta charset="utf-8"> 
-<title></title> 
+<head>
+<meta charset="utf-8">
+<title></title>
 </head>
 <body>
-	
+
 <h1>Password Generator</h1>
 <p>Welcome</p>
-	
+
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName"><br>
 <form>
-  <input id="checkbox1" type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
-  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
+
+<h3>Which kind of elements are allowed?</h3>
+
+<form id = "allowed">
+	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
+	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
+	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
+	<input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters <br>
+</form>
+
+
+<h3>Any restrictions?</h3>
+
+<form id = "elements">
+	<input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
+	<input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
+	<input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
+	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters  <br>
 </form>
 
 <button type="button" onclick="myFunction()">generate</button>
 <script>
+
+
+
 function myFunction() {
 	var x = document.getElementById("frm1");
 	var y = x.elements[0].value;
@@ -25,19 +44,19 @@ function myFunction() {
 	var numbers = "0123456789";
 	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
-	var r;
+	var checkbox4;
 	var i;
 	var res;
 	var text = "";
 	for (i = 0; i < y ; i++) {
 		r = Math.floor(Math.random() * 26);
-		res =lower[r];
-        text += res;
+		res = upper[r];
+    text += res;
     }
 	var isChecked = document.getElementById("checkbox1").checked;
     document.getElementById("demo").innerHTML = text;
 }
-    
+
 function atleastone(u1, l1, n1, s1, raw_pw) {
     var arr = []
     while(arr.length < 5){
@@ -69,7 +88,7 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
         random_num = Math.floor(Math.random() * special.length);
         raw_pw[pos_s] = special[random_num];
     }
-    return raw_pw; 
+    return raw_pw;
 }
 
 </script>
