@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
+<script>
+function createList(checklist, size) {
+	var lower = "abcdefghijklmnopqrstuvwxyz";
+	var numbers = "0123456789";
+	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var pool = "";
+	if(checklist[0]){
+		pool += lower;
+	}
+	if(checklist[1]){
+		pool += numbers;
+	}
+	if(checklist[2]){
+		pool += upper
+	}
+	if(checklist[3]){
+		pool += special;
+	}
+	var r;
+	var i;
+	var letter;
+	var text = "";
+	for (i = 0; i < size ; i++) {
+		r = Math.floor(Math.random() * pool.length);
+		letter =pool[r];
+        text += letter;
+    }
+	return text;
+}
+
+</script>
+</head>
+<body>
+	
+<h1>Password Generator</h1>
+<p>Welcome</p>
+	
+<form id = "frm1" action="/action_page.php">
+Length of the password: <input type="number" name="FirstName" value = 6><br>
+<form>
+  <input id="checkbox1" type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
+  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
+</form>
+
+<h3>Which kind of elements are allowed?</h3>
+
+<form>
+	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
+	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
+	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
+	<input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+</form>
+
+
+<h3>Any restrictions?</h3>
+
+<form>
+	<input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
+	<input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
+	<input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
+	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+</form>
+
+
+<button type="button" onclick="myFunction()">generate</button>
+<script>
+function myFunction() {
+	var x = document.getElementById("frm1");
+	var y = x.elements[0].value;
+	var isChecked = document.getElementById("checkbox1").checked;
+	var pool  = createList([true, true, true, true], y)
+    document.getElementById("demo").innerHTML = pool;
+}
+</script>
+<p id="demo">Your Password</p>
+
+</body>
+</html>
