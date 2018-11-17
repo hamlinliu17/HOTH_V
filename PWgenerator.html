@@ -12,10 +12,27 @@
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName"><br>
 <form>
-	<input id="checkbox4" type="checkbox" name="vehicle4" value="Car"> At least one Uppercase Character <br>
-	<input id="checkbox5" type="checkbox" name="vehicle5" value="Car"> At least one Numerical Character <br>
-	<input id="checkbox6" type="checkbox" name="vehicle6" value="Car"> At least one Special Character <br>
+
+<h3>What kind of elements do you want?</h3>
+
+<form>
+	<input id="checkbox4" type="checkbox" name="vehicle4" value="Car"> Uppercase letters <br>
+	<input id="checkbox5" type="checkbox" name="vehicle5" value="Car"> Lowercase letters <br>
+	<input id="checkbox6" type="checkbox" name="vehicle6" value="Car"> Numbers <br>
+	<input id="checkbox3" type="checkbox" name="vehicle2" value="Car"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
 </form>
+
+
+<h3>Any restrictions?</h3>
+
+<form>
+	<input id="checkbox4" type="checkbox" name="vehicle4" value="Car"> At least one Uppercase letters <br>
+	<input id="checkbox5" type="checkbox" name="vehicle5" value="Car"> At least one Lowercase letters <br>
+	<input id="checkbox6" type="checkbox" name="vehicle6" value="Car"> At least one Numbers <br>
+	<input id="checkbox3" type="checkbox" name="vehicle2" value="Car"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+</form>
+
+
 
 <button type="button" onclick="myFunction()">generate</button>
 <script>
@@ -39,6 +56,7 @@ function myFunction() {
     document.getElementById("demo").innerHTML = text;
 }
 </script>
+
 <p id="demo">Your Password</p>
 
 </body>
