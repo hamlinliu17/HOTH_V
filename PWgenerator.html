@@ -1,38 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title></title>
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
 </head>
 <body>
-
+	
 <h1>Password Generator</h1>
 <p>Welcome</p>
-
+	
 <form id = "frm1" action="/action_page.php">
 Length of the password: <input type="number" name="FirstName"><br>
 <form>
-
-<h3>Which kind of elements are allowed?</h3>
-
-<form>
-	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
-	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
-	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
-	<input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+  <input id="checkbox1" type="checkbox" name="vehicle1" value="Bike"> Include an Uppercase Character<br>
+  <input type="checkbox" name="vehicle2" value="Car"> I have a car 
 </form>
-
-
-<h3>Any restrictions?</h3>
-
-<form>
-	<input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
-	<input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
-	<input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
-	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
-</form>
-
-
 
 <button type="button" onclick="myFunction()">generate</button>
 <script>
@@ -55,8 +37,42 @@ function myFunction() {
 	var isChecked = document.getElementById("checkbox1").checked;
     document.getElementById("demo").innerHTML = text;
 }
-</script>
+    
+function atleastone(u1, l1, n1, s1, raw_pw) {
+    var arr = []
+    while(arr.length < 5){
+        var r = Math.floor(Math.random()*100) + 1;
+    i   f(arr.indexOf(r) === -1) arr.push(r);
+    }
+    var pos_u = arr[1]
+    var pos_l = arr[2]
+    var pos_n = arr[3]
+    var pos_s = arr[4]
+    var lower = "abcdefghijklmnopqrstuvwxyz";
+	var numbers = "0123456789";
+	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var random_num;
+    if (u1){
+        random_num = Math.floor(Math.random() * upper.length);
+        raw_pw[pos_u] = upper[random_num];
+    }
+    if (l1){
+        random_num = Math.floor(Math.random() * lower.length);
+        raw_pw[pos_l] = lower[random_num];
+    }
+    if (n1){
+        random_num = Math.floor(Math.random() * numbers.length);
+        raw_pw[pos_n] = numbers[random_num];
+    }
+    if (s1){
+        random_num = Math.floor(Math.random() * special.length);
+        raw_pw[pos_s] = special[random_num];
+    }
+    return raw_pw; 
+}
 
+</script>
 <p id="demo">Your Password</p>
 
 </body>
