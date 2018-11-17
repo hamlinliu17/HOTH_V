@@ -3,74 +3,50 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-</head>
-<body>
-
-<h1>Password Generator</h1>
-<p>Welcome</p>
-
-<form id = "frm1" action="/action_page.php">
-Length of the password: <input type="number" name="FirstName"><br>
-<form>
-
-<h3>Which kind of elements are allowed?</h3>
-
-<form id = "allowed">
-	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
-	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
-	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
-	<input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters <br>
-</form>
-
-
-<h3>Any restrictions?</h3>
-
-<form id = "elements">
-	<input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
-	<input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
-	<input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
-	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters  <br>
-</form>
-
-<button type="button" onclick="myFunction()">generate</button>
 <script>
-
-
-
-function myFunction() {
-	var x = document.getElementById("frm1");
-	var y = x.elements[0].value;
-	var lower = "abcdefghijklmnopqrstuvwxyz";
-	var numbers = "0123456789";
-	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
-	var checkbox4;
-	var i;
-	var res;
-	var text = "";
-	for (i = 0; i < y ; i++) {
-		r = Math.floor(Math.random() * 26);
-		res = upper[r];
-    text += res;
+function createList(u, l, n, s, size) {
+    var lower = "abcdefghijklmnopqrstuvwxyz";
+    var numbers = "0123456789";
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var pool = "";
+    if(l){
+        pool += lower;
     }
-	var isChecked = document.getElementById("checkbox1").checked;
-    document.getElementById("demo").innerHTML = text;
+    if(n){
+        pool += numbers;
+    }
+    if(u){
+        pool += upper
+    }
+    if(s){
+        pool += special;
+    }
+    var r;
+    var i;
+    var letter;
+    var text = "";
+    for (i = 0; i < size ; i++) {
+        r = Math.floor(Math.random() * pool.length);
+        letter =pool[r];
+        text += letter;
+    }
+    return text;
 }
-
 function atleastone(u1, l1, n1, s1, raw_pw) {
     var arr = []
     while(arr.length < 5){
         var r = Math.floor(Math.random()*100) + 1;
-    i   f(arr.indexOf(r) === -1) arr.push(r);
+        if(arr.indexOf(r) === -1) arr.push(r);
     }
     var pos_u = arr[1]
     var pos_l = arr[2]
     var pos_n = arr[3]
     var pos_s = arr[4]
     var lower = "abcdefghijklmnopqrstuvwxyz";
-	var numbers = "0123456789";
-	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var numbers = "0123456789";
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var random_num;
     if (u1){
         random_num = Math.floor(Math.random() * upper.length);
@@ -92,7 +68,56 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
 }
 
 </script>
+</head>
+<body>
+
+<h1>Password Generator</h1>
+<p>Welcome</p>
+
+<form id = "frm1" action="/action_page.php">
+Length of the password: <input type="number" name="FirstName" value = 6>
+</form>
+
+<h3>Which kind of elements are allowed?</h3>
+
+<form id = 'allowed'>
+    <input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
+    <input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
+    <input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
+    <input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+</form>
+
+
+<h3>Any restrictions?</h3>
+
+<form>
+    <input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
+    <input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
+    <input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
+    <input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+</form>
+
+
+<button type="button" onclick="myFunction()">generate</button>
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var y = x.elements[0].value;
+    var check4 = document.getElementById("checkbox4").checked;
+    var check5 = document.getElementById("checkbox5").checked;
+    var check6 = document.getElementById("checkbox6").checked;
+    var check7 = document.getElementById("checkbox7").checked;
+    var check8 = document.getElementById("checkbox8").checked;
+    var check9 = document.getElementById("checkbox9").checked;
+    var check10 = document.getElementById("checkbox10").checked;
+    var check11 = document.getElementById("checkbox11").checked;
+    var pool  = createList(check4, check5, check6, check7, y)
+    var text = atleastone(check8, check9, check10, check11, pool);
+    document.getElementById("demo").innerHTML = pool;
+}
+</script>
 <p id="demo">Your Password</p>
 
 </body>
 </html>
+
