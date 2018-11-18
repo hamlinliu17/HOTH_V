@@ -103,6 +103,15 @@ function myFunction() {
     var check9 = document.getElementById("checkbox9").checked;
     var check10 = document.getElementById("checkbox10").checked;
     var check11 = document.getElementById("checkbox11").checked;
+    var count = 0;
+    if(check8) count++;
+    if(check9) count++;
+    if(check10) count++;
+    if(check11) count++;
+    if(count > y){
+        window.alert("Error! Length needs to be increased to accomodate restrictions!");
+        return;
+    }
     var pool  = createList(check4, check5, check6, check7, y)
     var text = atleastone(check8, check9, check10, check11, pool);
     document.getElementById("demo").innerHTML = pool;
