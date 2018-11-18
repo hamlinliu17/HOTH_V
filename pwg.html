@@ -8,31 +8,31 @@ String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 function createList(u, l, n, s, size) {
-	var lower = "abcdefghijklmnopqrstuvwxyz";
-	var numbers = "0123456789";
-	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var lower = "abcdefghijklmnopqrstuvwxyz";
+    var numbers = "0123456789";
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var pool = "";
-	if(l) pool += lower;
-	if(n) pool += numbers;
-	if(u) pool += upper;
-	if(s) pool += special;
-	var r;
-	var i;
-	var letter;
-	var text = "";
-	for (i = 0; i < size ; i++) {
-		r = Math.floor(Math.random() * pool.length);
-		letter =pool[r];
+    if(l) pool += lower;
+    if(n) pool += numbers;
+    if(u) pool += upper;
+    if(s) pool += special;
+    var r;
+    var i;
+    var letter;
+    var text = "";
+    for (i = 0; i < size ; i++) {
+        r = Math.floor(Math.random() * pool.length);
+        letter =pool[r];
         text += letter;
     }
-	return text;
+    return text;
 }
 function atleastone(u1, l1, n1, s1, raw_pw) {
     var arr = []
     while(arr.length < raw_pw.length){
         var r = Math.floor(Math.random()*raw_pw.length);
-    	if(arr.indexOf(r) === -1) arr.push(r);
+        if(arr.indexOf(r) === -1) arr.push(r);
     }
     var i = 0;
     if(u1) var pos_u = arr[i++]
@@ -40,9 +40,9 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     if(n1) var pos_n = arr[i++]
     if(s1) var pos_s = arr[i++]
     var lower = "abcdefghijklmnopqrstuvwxyz";
-	var numbers = "0123456789";
-	var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
+    var numbers = "0123456789";
+    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var random_num;
     var text = "";
     if (u1){
@@ -90,51 +90,72 @@ Length of the password: <input type="number" name="FirstName" value = 6>
 <h3>Which kind of elements are allowed?</h3>
 
 <form id = 'allowed'>
-	<input id="checkbox4" type="checkbox" name="vehicle4" value="1"> Uppercase letters <br>
-	<input id="checkbox5" type="checkbox" name="vehicle5" value="2"> Lowercase letters <br>
-	<input id="checkbox6" type="checkbox" name="vehicle6" value="3"> Numbers <br>
-	<input id="checkbox7" type="checkbox" name="vehicle7" value="4"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+    <input id="checkbox4" type="checkbox"> Uppercase letters <br>
+    <input id="checkbox5" type="checkbox"> Lowercase letters <br>
+    <input id="checkbox6" type="checkbox"> Numbers <br>
+    <input id="checkbox7" type="checkbox"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
 </form>
 
 
 <h3>Any restrictions?</h3>
 
 <form>
-	<input id="checkbox8" type="checkbox" name="vehicle8" value="5"> At least one Uppercase letters <br>
-	<input id="checkbox9" type="checkbox" name="vehicle9" value="6"> At least one Lowercase letters <br>
-	<input id="checkbox10" type="checkbox" name="vehicle10" value="7"> At least one Numbers <br>
-	<input id="checkbox11" type="checkbox" name="vehicle11" value="8"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
+    <input id="checkbox8" type="checkbox"> At least one Uppercase letters <br>
+    <input id="checkbox9" type="checkbox"> At least one Lowercase letters <br>
+    <input id="checkbox10" type="checkbox"> At least one Numbers <br>
+    <input id="checkbox11" type="checkbox"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.><) <br>
 </form>
 
 
 <button type="button" onclick="myFunction()">generate</button>
 <script>
 function myFunction() {
-	var x = document.getElementById("frm1");
-	var y = x.elements[0].value;
-	var check4 = document.getElementById("checkbox4").checked;
-	var check5 = document.getElementById("checkbox5").checked;
-	var check6 = document.getElementById("checkbox6").checked;
-	var check7 = document.getElementById("checkbox7").checked;
-  var check8 = document.getElementById("checkbox8").checked;
-  var check9 = document.getElementById("checkbox9").checked;
-  var check10 = document.getElementById("checkbox10").checked;
-  var check11 = document.getElementById("checkbox11").checked;
-  var count = 0;
-  if(check8) count++;
-  if(check9) count++;
-  if(check10) count++;
-  if(check11) count++;
-  if(count > y){
-    window.alert("Error! Length needs to be increased to accomodate restrictions!");
-      return;
+    var x = document.getElementById("frm1");
+    var y = x.elements[0].value;
+    var check4 = document.getElementById("checkbox4").checked;
+    var check5 = document.getElementById("checkbox5").checked;
+    var check6 = document.getElementById("checkbox6").checked;
+    var check7 = document.getElementById("checkbox7").checked;
+    var check8 = document.getElementById("checkbox8").checked;
+    var check9 = document.getElementById("checkbox9").checked;
+    var check10 = document.getElementById("checkbox10").checked;
+    var check11 = document.getElementById("checkbox11").checked;
+    if(!check4 & !check5 & !check6 & !check7){
+        window.alert("Error! Conditions are not defined!");
+        return;
     }
-	var pool = createList(check4, check5, check6, check7, y)
+    var count = 0;
+    if(check8) count++;
+    if(check9) count++;
+    if(check10) count++;
+    if(check11) count++;
+    if(count > y){
+        window.alert("Error! Length needs to be increased to accomodate restrictions!");
+        return;
+    }
+    if(!check4 & check8){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    if(!check5 & check9){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    if(!check6 & check10){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    if(!check7 & check11){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    var pool = createList(check4, check5, check6, check7, y)
     var text = atleastone(check8, check9, check10, check11, pool);
-    document.getElementById("demo7").innerHTML = text;
+    document.getElementById("demo").innerHTML = text;
 }
 </script>
-<p id="demo7">Your Password</p>
+<p id="demo">Your Password</p>
+
 
 </body>
 </html>
