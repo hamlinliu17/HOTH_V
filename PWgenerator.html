@@ -40,6 +40,7 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var random_num;
+    raw_pw_arr = raw_pw.split();
     if (u1){
         random_num = Math.floor(Math.random() * upper.length);
         raw_pw[pos_u] += upper[random_num];
@@ -56,7 +57,7 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
         random_num = Math.floor(Math.random() * special.length);
         raw_pw[pos_s] = special[random_num];
     }
-    return raw_pw;
+    return raw_pw_arr.join("");
 }
 
 </script>
