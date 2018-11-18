@@ -27,14 +27,14 @@ function createList(u, l, n, s, size) {
 }
 function atleastone(u1, l1, n1, s1, raw_pw) {
     var arr = []
-    while(arr.length < 4){
-        var r = Math.floor(Math.random()*100) + 1;
+    while(arr.length < raw_pw.length){
+        var r = Math.floor(Math.random()*raw_pw.length);
         if(arr.indexOf(r) === -1) arr.push(r);
     }
-    var pos_u = arr[1]
-    var pos_l = arr[2]
-    var pos_n = arr[3]
-    var pos_s = arr[4]
+    var pos_u = arr[0]
+    var pos_l = arr[1]
+    var pos_n = arr[2]
+    var pos_s = arr[3]
     var lower = "abcdefghijklmnopqrstuvwxyz";
     var numbers = "0123456789";
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -114,7 +114,7 @@ function myFunction() {
     }
     var pool  = createList(check4, check5, check6, check7, y)
     var text = atleastone(check8, check9, check10, check11, pool);
-    document.getElementById("demo").innerHTML = pool;
+    document.getElementById("demo").innerHTML = text;
 }
 </script>
 <p id="demo">Your Password</p>
