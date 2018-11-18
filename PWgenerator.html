@@ -10,18 +10,10 @@ function createList(u, l, n, s, size) {
     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var pool = "";
-    if(l){
-        pool += lower;
-    }
-    if(n){
-        pool += numbers;
-    }
-    if(u){
-        pool += upper
-    }
-    if(s){
-        pool += special;
-    }
+    if(l) pool += lower;
+    if(n) pool += numbers;
+    if(u) pool += upper;
+    if(s) pool += special;
     var r;
     var i;
     var letter;
@@ -35,7 +27,7 @@ function createList(u, l, n, s, size) {
 }
 function atleastone(u1, l1, n1, s1, raw_pw) {
     var arr = []
-    while(arr.length < 5){
+    while(arr.length < 4){
         var r = Math.floor(Math.random()*100) + 1;
         if(arr.indexOf(r) === -1) arr.push(r);
     }
