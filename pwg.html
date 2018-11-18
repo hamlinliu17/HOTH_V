@@ -29,13 +29,11 @@ function createList(u, l, n, s, size) {
 	return text;
 }
 function atleastone(u1, l1, n1, s1, raw_pw) {
-	document.getElementById("demo1").innerHTML = raw_pw;
     var arr = []
     while(arr.length < raw_pw.length){
         var r = Math.floor(Math.random()*raw_pw.length);
     	if(arr.indexOf(r) === -1) arr.push(r);
     }
-    document.getElementById("demo2").innerHTML = arr;
     var i = 0;
     if(u1) var pos_u = arr[i++]
     if(l1) var pos_l = arr[i++]
@@ -52,8 +50,6 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
         text = raw_pw.substr(0,pos_u);
         text += upper[random_num];
         text += raw_pw.substr(pos_u+1,raw_pw.length);
-        document.getElementById("demo6").innerHTML = text;
-        document.getElementById("demo3").innerHTML = raw_pw;
         raw_pw = text;
     }
     if (l1){
@@ -66,9 +62,7 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     if (n1){
         random_num = Math.floor(Math.random() * numbers.length);
         text = raw_pw.substr(0,pos_n);
-        document.getElementById("demo4").innerHTML = text;
         text += numbers[random_num];
-        document.getElementById("demo5").innerHTML = text;
         text += raw_pw.substr(pos_n+1,raw_pw.length);
         raw_pw = text;
     }
@@ -122,32 +116,25 @@ function myFunction() {
 	var check5 = document.getElementById("checkbox5").checked;
 	var check6 = document.getElementById("checkbox6").checked;
 	var check7 = document.getElementById("checkbox7").checked;
-    var check8 = document.getElementById("checkbox8").checked;
-    var check9 = document.getElementById("checkbox9").checked;
-    var check10 = document.getElementById("checkbox10").checked;
-    var check11 = document.getElementById("checkbox11").checked;
-    var count = 0;
-    if(check8) count++;
-    if(check9) count++;
-    if(check10) count++;
-    if(check11) count++;
-    if(count > y){
-    	window.alert("Error! Length needs to be increased to accomodate restrictions!");
-        return;
+  var check8 = document.getElementById("checkbox8").checked;
+  var check9 = document.getElementById("checkbox9").checked;
+  var check10 = document.getElementById("checkbox10").checked;
+  var check11 = document.getElementById("checkbox11").checked;
+  var count = 0;
+  if(check8) count++;
+  if(check9) count++;
+  if(check10) count++;
+  if(check11) count++;
+  if(count > y){
+    window.alert("Error! Length needs to be increased to accomodate restrictions!");
+      return;
     }
 	var pool = createList(check4, check5, check6, check7, y)
     var text = atleastone(check8, check9, check10, check11, pool);
     document.getElementById("demo7").innerHTML = text;
 }
 </script>
-<p id="demo1">Your Password</p>
-<p id="demo2">Your Password</p>
-<p id="demo3">Your Password</p>
-<p id="demo4">Your Password</p>
-<p id="demo5">Your Password</p>
-<p id="demo6">Your Password</p>
 <p id="demo7">Your Password</p>
 
 </body>
 </html>
-
