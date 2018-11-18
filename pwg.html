@@ -4,14 +4,11 @@
 <meta charset="utf-8">
 <title></title>
 <script>
-String.prototype.replaceAt=function(index, replacement) {
-    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
-}
+var lower = "abcdefghijklmnopqrstuvwxyz";
+var numbers = "0123456789";
+var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
 function createList(u, l, n, s, size) {
-    var lower = "abcdefghijklmnopqrstuvwxyz";
-    var numbers = "0123456789";
-    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var pool = "";
     if(l) pool += lower;
     if(n) pool += numbers;
@@ -39,10 +36,6 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     if(l1) var pos_l = arr[i++]
     if(n1) var pos_n = arr[i++]
     if(s1) var pos_s = arr[i++]
-    var lower = "abcdefghijklmnopqrstuvwxyz";
-    var numbers = "0123456789";
-    var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var special = "!@#$%^&*()-_=+\|[]{};:/?.><";
     var random_num;
     var text = "";
     if (u1){
@@ -133,19 +126,7 @@ function myFunction() {
         window.alert("Error! Length needs to be increased to accomodate restrictions!");
         return;
     }
-    if(!check4 & check8){
-        window.alert("Error! Conditions are not defined!");
-        return;
-    }
-    if(!check5 & check9){
-        window.alert("Error! Conditions are not defined!");
-        return;
-    }
-    if(!check6 & check10){
-        window.alert("Error! Conditions are not defined!");
-        return;
-    }
-    if(!check7 & check11){
+    if((!check4 & check8) | !check5 & check9 | !check6 & check10 | !check7 & check11){
         window.alert("Error! Conditions are not defined!");
         return;
     }
