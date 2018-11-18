@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+var lower = "abcdefghijklmnopqrstuvwxyz";
+var numbers = "0123456789";
+var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var special = "!@#$%^&*()-_=+\|[]{};:/?.>";
+function replace(pw, index, rep){
+	var text = "";
+	text = pw.substr(0,index);
+    text += rep;
+    text += pw.substr(index+1,pw.length);
+    return text;
+}
+function createList(u, l, n, s, size) {
+    var pool = "";
+    if(l) pool += lower;
+    if(n) pool += numbers;
+    if(u) pool += upper;
+    if(s) pool += special;
+    var r;
+    var i;
+    var letter;
+    var text = "";
+    for (i = 0; i < size ; i++) {
+        r = Math.floor(Math.random() * pool.length);
+        letter =pool[r];
+        text += letter;
+    }
+    return text;
+}
+function atleastone(u1, l1, n1, s1, raw_pw) {
+    var arr = []
+    while(arr.length < raw_pw.length){
+        var r = Math.floor(Math.random()*raw_pw.length);
+        if(arr.indexOf(r) === -1) arr.push(r);
+    }
+    var i = 0;
+    if(u1) var pos_u = arr[i++]
+    if(l1) var pos_l = arr[i++]
+    if(n1) var pos_n = arr[i++]
+    if(s1) var pos_s = arr[i++]
+    var random_num;
+    var rep;
+    if (u1){
+        random_num = Math.floor(Math.random() * upper.length);
+        text = raw_pw.substr(0,pos_u);
+        rep = upper[random_num];
+        raw_pw = replace(raw_pw, pos_u, rep);
+    }
+    if (l1){
+        random_num = Math.floor(Math.random() * lower.length);
+        text = raw_pw.substr(0,pos_l);
+        rep = lower[random_num];
+        raw_pw = replace(raw_pw, pos_l, rep);
+    }
+    if (n1){
+        random_num = Math.floor(Math.random() * numbers.length);
+        rep = numbers[random_num];
+        raw_pw = replace(raw_pw, pos_n, rep);
+    }
+    if (s1){
+        random_num = Math.floor(Math.random() * special.length);
+        rep = special[random_num];
+        raw_pw = replace(raw_pw, pos_s, rep);
+    }
+    return raw_pw;
+}
+</script>
+</head>
+<body>
+
+<h1>Password Generator</h1>
+<p>Welcome</p>
+
+<form id = "frm1" action="/action_page.php">
+Length of the password: <input type="number" name="FirstName" value = 6>
+</form>
+
+<h3>Which kind of elements are allowed?</h3>
+
+<form id = 'allowed'>
+    <input id="checkbox4" type="checkbox"> Uppercase letters <br>
+    <input id="checkbox5" type="checkbox"> Lowercase letters <br>
+    <input id="checkbox6" type="checkbox"> Numbers <br>
+    <input id="checkbox7" type="checkbox"> Special Characters (!@#$%^&*()-_=+\|[]{};:/?.>) <br>
+</form>
+
+
+<h3>Any restrictions?</h3>
+
+<form>
+    <input id="checkbox8" type="checkbox"> At least one Uppercase letters <br>
+    <input id="checkbox9" type="checkbox"> At least one Lowercase letters <br>
+    <input id="checkbox10" type="checkbox"> At least one Numbers <br>
+    <input id="checkbox11" type="checkbox"> At least one Special Characters (!@#$%^&*()-_=+\|[]{};:/?.>) <br>
+</form>
+
+
+<button type="button" onclick="myFunction()">generate</button>
+<script>
+function myFunction() {
+    var x = document.getElementById("frm1");
+    var y = x.elements[0].value;
+    var check4 = document.getElementById("checkbox4").checked;
+    var check5 = document.getElementById("checkbox5").checked;
+    var check6 = document.getElementById("checkbox6").checked;
+    var check7 = document.getElementById("checkbox7").checked;
+    var check8 = document.getElementById("checkbox8").checked;
+    var check9 = document.getElementById("checkbox9").checked;
+    var check10 = document.getElementById("checkbox10").checked;
+    var check11 = document.getElementById("checkbox11").checked;
+    if(!check4 & !check5 & !check6 & !check7){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    var count = 0;
+    if(check8) count++;
+    if(check9) count++;
+    if(check10) count++;
+    if(check11) count++;
+    if(count > y){
+        window.alert("Error! Length needs to be increased to accomodate restrictions!");
+        return;
+    }
+    if((!check4 & check8) | !check5 & check9 | !check6 & check10 | !check7 & check11){
+        window.alert("Error! Conditions are not defined!");
+        return;
+    }
+    var pool = createList(check4, check5, check6, check7, y)
+    var text = atleastone(check8, check9, check10, check11, pool);
+    document.getElementById("demo").innerHTML = text;
+}
+</script>
+<p id="demo">Your Password</p>
+
+
+</body>
+</html>
