@@ -15,6 +15,9 @@ body {
     max-width: 800px;
     padding: 2em 2em 4em;
 }
+input {
+    font-size: 20px;
+}
 .button {
     background-color: #555555;
     border: none;
