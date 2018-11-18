@@ -42,19 +42,19 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     var random_num;
     if (u1){
         random_num = Math.floor(Math.random() * upper.length);
-        raw_pw[pos_u] = upper[random_num];
+        raw_pw += upper[random_num];
     }
     if (l1){
         random_num = Math.floor(Math.random() * lower.length);
-        raw_pw[pos_l] = lower[random_num];
+        raw_pw += lower[random_num];
     }
     if (n1){
         random_num = Math.floor(Math.random() * numbers.length);
-        raw_pw[pos_n] = numbers[random_num];
+        raw_pw += numbers[random_num];
     }
     if (s1){
         random_num = Math.floor(Math.random() * special.length);
-        raw_pw[pos_s] = special[random_num];
+        raw_pw += special[random_num];
     }
     return raw_pw;
 }
@@ -112,7 +112,7 @@ function myFunction() {
         window.alert("Error! Length needs to be increased to accomodate restrictions!");
         return;
     }
-    var pool  = createList(check4, check5, check6, check7, y)
+    var pool  = createList(check4, check5, check6, check7, y - 1)
     var text = atleastone(check8, check9, check10, check11, pool);
     document.getElementById("demo").innerHTML = text;
 }
@@ -121,4 +121,3 @@ function myFunction() {
 
 </body>
 </html>
-
