@@ -43,11 +43,11 @@ function atleastone(u1, l1, n1, s1, raw_pw) {
     raw_pw_arr = raw_pw.split();
     if (u1){
         random_num = Math.floor(Math.random() * upper.length);
-        raw_pw[pos_u] += upper[random_num];
+        raw_pw[pos_u] = upper[random_num];
     }
     if (l1){
         random_num = Math.floor(Math.random() * lower.length);
-        raw_pw[pos_l] += lower[random_num];
+        raw_pw[pos_l] = lower[random_num];
     }
     if (n1){
         random_num = Math.floor(Math.random() * numbers.length);
