@@ -6,4 +6,4 @@
 Basic Password Generator that asks for length of the password and certain character limitations
 
 
-
+Run PasswordGenerator.html to use the program
